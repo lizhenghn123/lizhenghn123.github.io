@@ -22,12 +22,14 @@ favicon: /public/img/headlogo.png
 
 # google analytics 设置
 ga:
-  id: UA-54262064-1 
-  url: http://lizhenghn123.github.io/
+  id: UA-72126618-1 
+  url: cpper.info
 
 # disqus 设置
 disqus:
   shortname: lizhenghn
+  comments: true
+  disqus_show_comment_count: true
 
 # 主题设置，自动激活某个标签
 active: 架构
