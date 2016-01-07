@@ -1,19 +1,21 @@
+#博文的固定链接
 permalink: /:year/:month/:day/:title.html
+#分页时每页博文数量
 paginate: 10
 markdown: redcarpet
 
 # 作者信息
 author: 
-  name: LIZHENG
+  name: lizhenghn@gmail.com
   email: lizhenghn@gmail.com
-  link: http://lizhenghn123.github.io/
+  link: http://cpper.info
   cnblogs: http://www.cnblogs.com/lizhenghn
   github: https://github.com/lizhenghn123
 
 # 站点信息
-title: CPPER
-description: CPPER`s blog
-url: http://lizhenghn123.github.io/
+title: cpper
+description: cpper`s blog
+url: http://cpper.info
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -24,7 +26,11 @@ favicon: /public/img/headlogo.png
 ga:
   id: UA-72126618-1 
   url: cpper.info
-
+  
+#sitemap
+sitemap:
+  path: sitemap.txt
+  
 # disqus 设置
 disqus:
   shortname: lizhenghn
@@ -37,7 +43,6 @@ active: 架构
 # 首页除了最新文章外显示分类
 cates: 
   - Linux
-  - Dev
 
 # 中文本地化
 locals:
