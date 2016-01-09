@@ -2,7 +2,7 @@
 layout: post
 title: 2016年计划和期望
 category: 生活
-tags: 生活 计划 期望
+tags: 生活 计划
 keywords: 生活 计划 期望
 description: 生活 计划 期望
 ---

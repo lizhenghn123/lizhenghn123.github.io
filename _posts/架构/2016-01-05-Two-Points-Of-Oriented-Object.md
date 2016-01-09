@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 面向对象设计之要两大要点
+title: 面向对象设计之两大要点
 category: 架构
 tags: 开发 技术 设计模式
 keywords: 面向对象 设计模式 面向接口编程 优先使用组合
