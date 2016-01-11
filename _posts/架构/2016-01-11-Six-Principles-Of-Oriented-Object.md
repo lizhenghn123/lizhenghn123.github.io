@@ -31,7 +31,7 @@ description: 本文介绍面向对象设计过程中的六大原则， 比如单
 
 **本节先介绍面向对象之6大原则。**
 
-## 面向对象之六大原则
+## 1. 面向对象之六大原则
 
 ### 单一职责原则（Single Responsibility Principle）
 **要点**
@@ -73,7 +73,7 @@ HttpRequest（向server端请求http接口形式的数据）
 
 单一职责原则是一个非常简单的原则，但通常也是最难使用正确的一个原则。在实践中经常会遇到职责间相互耦合的情况，从这些各不相同的职责中发现并隔离职责就是软件设计的真谛所在。我们所讨论的其他设计原则最终也会回归到这个原则上来（The rest of the principles we will discuss come back to this issue in one way or another）。
 
-### 依赖倒置原则（Dependency Inversion Principle）
+### 2. 依赖倒置原则（Dependency Inversion Principle）
 **要点**
 
  - 上层模块不应该依赖于低层模块，二者都应该依赖于抽象。
@@ -130,7 +130,7 @@ HttpRequest（向server端请求http接口形式的数据）
 
 DIP是很多面向对象技术的根基。它特别适合应用于构建可复用的软件框架，其对于构建弹性地易于变化的代码也特别重要。并且，因为抽象和细节已经彼此隔离，代码也变得更易维护。
 
-### 里氏替换原则 （Liskov Substitution Principle）
+### 3. 里氏替换原则 （Liskov Substitution Principle）
 **要点**
 
 - 使用基类对象指针或引用的函数必须能够在不了解子类的条件下使用子类的对象。
@@ -194,9 +194,9 @@ DIP是很多面向对象技术的根基。它特别适合应用于构建可复�
 
 **总结**
 
-开放封闭原则是构建可维护性和可重用性代码的基础。它强调设计良好的代码可以不通过修改而扩展，新的功能通过添加新的代码来实现，而不需要更改已有的可工作的代码。抽象（Abstraction）和多态（Polymorphism）是实现这一原则的主要机制，而继承（Inheritance）则是实现抽象和多态的主要方法。
+里氏替换s原则是构建可维护性和可重用性代码的基础。它强调设计良好的代码可以不通过修改而扩展，新的功能通过添加新的代码来实现，而不需要更改已有的可工作的代码。抽象（Abstraction）和多态（Polymorphism）是实现这一原则的主要机制，而继承（Inheritance）则是实现抽象和多态的主要方法。
 
-### 开放封闭原则 （Open-Close Principle）
+### 4. 开放封闭原则 （Open-Close Principle）
 **要点**
 
 - 模块应该面向扩展开放（Open For Extension），面向修改封闭（Closed For Modification）；
@@ -217,7 +217,7 @@ DIP是很多面向对象技术的根基。它特别适合应用于构建可复�
 
 开放封闭原则是构建可维护性和可重用性代码的基础。它强调设计良好的代码可以不通过修改而扩展，新的功能通过添加新的代码来实现，而不需要更改已有的可工作的代码。可以通过多态（继承/模板）的方式实现这一原则。
 
-### 接口隔离原则 （Interface Segregation Principle）
+### 5. 接口隔离原则 （Interface Segregation Principle）
 **要点**
 
 - 避免胖接口（fat interface）
@@ -268,7 +268,7 @@ C++ STL中的map接口：
 - 提升代码的可读性；
 - 隐藏实现细节。
 
-### 最少知识原则/迪米特原则 （Least Knowledge Principle/Law of Demeter）
+### 6. 最少知识原则/迪米特原则 （Least Knowledge Principle/Law of Demeter）
 **要点**
 
 - 更好的信息隐藏和更少的信息重载；
