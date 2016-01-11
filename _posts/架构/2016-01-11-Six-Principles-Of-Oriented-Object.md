@@ -31,9 +31,9 @@ description: 本文介绍面向对象设计过程中的六大原则， 比如单
 
 **本节先介绍面向对象之6大原则。**
 
-## 1. 面向对象之六大原则
+## 面向对象之六大原则
 
-### 单一职责原则（Single Responsibility Principle）
+### 1. 单一职责原则（Single Responsibility Principle）
 **要点**
 
 - 一个类应该有且只有一个变化的原因。
