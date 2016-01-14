@@ -22,3 +22,15 @@
 
 
 本站使用的评论系统是第三方应用：[disqus](http://disqus.com)
+
+
+
+# 你想使用我的博客模板?
+前提是你已经搭建了jekyll的环境。那么：
+
+1. fork库到自己的github；
+2. 修改名字为：`username.github.io`，username即是你自己的github username；
+3. clone库到本地，参考`_posts`中的目录结构自己创建适合自己的文章目录结构；
+4. 修改CNAME，或者删掉这个文件；
+5. 修改`_config.yml`配置项（也是主要的修改地方）；
+6. 像百度分享、百度统计、google 统计的辅助功能，你可以自行注册，之后将生成的js代码替换掉我的即可。
