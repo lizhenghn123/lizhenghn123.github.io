@@ -247,14 +247,14 @@ Singleton 模式经常和 Factory（ Abstract Factory） 模式在一起使用�
 	private:
 		int type_;
 	};
-	class Proxy1
+	class Proxy1 : public Proxy
 	{
 	public:
 		virtual Proxy1() {}
 	private:
 		// some attributes
 	};
-	class Proxy2
+	class Proxy2 : public Proxy
 	{
 	public:
 		virtual Proxy2() {}
@@ -305,7 +305,7 @@ Singleton 模式经常和 Factory（ Abstract Factory） 模式在一起使用�
 	    return NULL;
 	}
 	// usage
-	class Proxy3
+	class Proxy3 : public Proxy
 	{
 	public:
 		virtual Proxy3() {}
