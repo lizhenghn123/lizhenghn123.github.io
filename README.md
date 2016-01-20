@@ -1,5 +1,6 @@
 # lizhenghn123.github.io
-[My Bolg Pages](http://cpper.info)
+
+**点击预览：[cpper.info](http://cpper.info)**
 
 
 本站是通过jekyll和github搭建起来的。
@@ -25,8 +26,8 @@
 
 
 
-# 你想使用我的博客模板?
-前提是你已经搭建了jekyll的环境。那么：
+# 想使用我的博客模板?
+很简单，前提是你已经搭建了jekyll的环境。那么：
 
 1. fork库到自己的github；
 2. 修改名字为：`username.github.io`，username即是你自己的github username；
