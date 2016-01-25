@@ -29,14 +29,14 @@ WebSocket是为解决客户端与服务端实时通信而产生的技术。webso
 WebSocket API最伟大之处在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息。 浏览器和服务器只需要要做一个握手的动作，在建立连接之后，服务器可以主动传送数据给客户端，客户端也可以随时向服务器发送数据。 此外，服务器与客户端之间交换的标头信息很小。
 
 WebSocket并不限于以Ajax(或XHR)方式通信，因为Ajax技术需要客户端发起请求，而WebSocket服务器和客户端可以彼此相互推送信息；
+
 ![httpserver_websocketserver](http://i.imgur.com/9oXAC24.png)
+
 因此从服务器角度来说，websocket有以下好处：
 
 1. 节省每次请求的header
 http的header一般有几十字节
-2. Server Push
-服务器可以主动传送数据给客户端
-
+2. Server Push，服务器可以主动传送数据给客户端
 
 ## 3. 历史沿革
 ### 3.1 http协议
