@@ -97,6 +97,7 @@ W3C给出了答案，在新一代html标准html5中提供了一种浏览器和�
     WebSocket-Origin: http://www.qixing318.com
     WebSocket-Location: ws://www.qixing318.com/ls
 - 基于md5加密方式的握手协议
+
 客户端请求：
 
     GET /demo HTTP/1.1
