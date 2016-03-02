@@ -5,7 +5,7 @@ title: 通过代码实例组合使用5种创建型设计模式
 
 category: 架构
 
-tags: 开发 技术 设计模式
+tags: 开发 C++ 设计模式
 
 keywords: 面向对象 设计模式 Gof
 

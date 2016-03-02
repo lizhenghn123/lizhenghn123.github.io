@@ -5,7 +5,7 @@ title: 多线程并发编程之同步工具CountDownLatch
 
 category: 开发
 
-tags: 开发 技术 多线程
+tags: 开发 C++ 多线程
 
 keywords: 开发 技术 多线程 CountDownLatch 栅栏
 
