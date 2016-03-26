@@ -115,36 +115,52 @@ Redis list的应用场景非常多，也是Redis最重要的数据结构之一�
 ### 相关命令  
 - BLPOP  
 BLPOP key1 [key2 ] timeout   取出并获取列表中的第一个元素，或阻塞，直到有可用
+
 - BRPOP  
 BRPOP key1 [key2 ] timeout 	 取出并获取列表中的最后一个元素，或阻塞，直到有可用
+
 - BRPOPLPUSH  
 BRPOPLPUSH source destination timeout   从列表中弹出一个值，它推到另一个列表并返回它;或阻塞，直到有可用
+
 - LINDEX  
 LINDEX key index 			 从一个列表其索引获取对应的元素
+
 - LINSERT  
 LINSERT key BEFORE|AFTER pivot value  在列表中的其他元素之后或之前插入一个元素
+
 - LLEN  
 LLEN key					    获取列表的长度
+
 - LPOP  
 LPOP key						获取并取出列表中的第一个元素
+
 - LPUSH  
 LPUSH key value1 [value2]		在前面加上一个或多个值的列表
+
 - LPUSHX  
 LPUSHX key value				在前面加上一个值列表，仅当列表中存在
+
 - LRANGE  
 LRANGE key start stop			从一个列表获取各种元素
+
 - LREM  
 LREM key count value			从列表中删除元素
+
 - LSET  
 LSET key index value			在列表中的索引设置一个元素的值
+
 - LTRIM  
 LTRIM key start stop			修剪列表到指定的范围内
+
 - RPOP  
 RPOP key						取出并获取列表中的最后一个元素
+
 - RPOPLPUSH  
 RPOPLPUSH source destination	删除最后一个元素的列表，将其附加到另一个列表并返回它
+
 - RPUSH  
 RPUSH key value1 [value2]		添加一个或多个值到列表
+
 - RPUSHX  
 RPUSHX key value				添加一个值列表，仅当列表中存在
 
@@ -181,32 +197,43 @@ Redis Hash对应Value内部实际就是一个HashMap，实际这里会有2种不
 
 - HDEL  
 HDEL key field[field...]            删除对象的一个或几个属性域，不存在的属性将被忽略
+
 - HEXISTS  
 HEXISTS key field                   查看对象是否存在该属性域
+
 - HGET  
 HGET key field                      获取对象中该field属性域的值
+
 - HGETALL  
 HGETALL key                         获取对象的所有属性域和值
+
 - HINCRBY  
 HINCRBY key field value             将该对象中指定域的值增加给定的value，原子自增操作，只能是integer的属性值可以使用
+
 - HINCRBYFLOAT  
 HINCRBYFLOAT key field increment    将该对象中指定域的值增加给定的浮点数  
+
 - HKEYS  
 HKEYS key                           获取对象的所有属性字段
+
 - HVALS
-HVALS key                           获取对象的所有属性值
+HVALS key                           获取对象的所有属性值  
 - HLEN  
-HLEN key                            获取对象的所有属性字段的总数
+HLEN key                            获取对象的所有属性字段的总数  
 - HMGET  
 HMGET key field[field...]           获取对象的一个或多个指定字段的值
 - HSET  
 HSET key field value                设置对象指定字段的值 
+
 - HMSET 
 HMSET key field value [field value ...] 同时设置对象中一个或多个字段的值
+
 - HSETNX  
 HSETNX key field value               只在对象不存在指定的字段时才设置字段的值 
-- HSTRLEN
+
+- HSTRLEN  
 HSTRLEN key field                    返回对象指定field的value的字符串长度，如果该对象或者field不存在，返回0.
+
 - HSCAN    
 HSCAN key cursor [MATCH pattern] [COUNT count]  类似SCAN命令
 
@@ -246,33 +273,47 @@ Redis set对外提供的功能与list类似是一个列表的功能，特殊之�
 
 ### 相关命令
 - SADD  
-SADD key member [member ...]    添加一个或者多个元素到集合(set)里
+SADD key member [member ...]    添加一个或者多个元素到集合(set)里  
+
 - SACRD  
-SCARD key					    获取集合里面的元素数量
+SCARD key					    获取集合里面的元素数量  
+
 - SDIFF  
-SDIFF key [key ...]				获得队列不存在的元素
+SDIFF key [key ...]				获得队列不存在的元素  
+
 - SDIFFSTORE  
 SDIFFSTORE destination key [key ...]    获得队列不存在的元素，并存储在一个关键的结果集
+
 - SINTER  
 SINTER key [key ...]			获得两个集合的交集
+
 - SINTERSTORE  
 SINTERSTORE destination key [key ...]	获得两个集合的交集，并存储在一个集合中
+
 - SISMEMBER  
 SISMEMBER key member			确定一个给定的值是一个集合的成员
+
 - SMEMBERS  
 SMEMBERS key					获取集合里面的所有key
+
 - SMOVE  
 SMOVE source destination member	移动集合里面的一个key到另一个集合
+
 - SPOP  
 SPOP key [count]				获取并删除一个集合里面的元素
+
 - SRANDMEMBER  
 SRANDMEMBER key [count]			从集合里面随机获取一个元素
+
 - SREM  
 SREM key member [member ...]	从集合里删除一个或多个元素，不存在的元素会被忽略
+
 - SUNION  
 SUNION key [key ...]			添加多个set元素
+
 - SUNIONSTORE  
 SUNIONSTORE destination key [key ...]	合并set元素，并将结果存入新的set里面
+
 - SSCAN  
 SSCAN key cursor [MATCH pattern] [COUNT count]	迭代set里面的元素
 
@@ -322,46 +363,65 @@ Redis sorted set的使用场景与set类似，区别是set不是自动有序的�
 ###相关命令  
 - ZADD  
 	ZADD key score1 member1 [score2 member2]	添加一个或多个成员到有序集合，或者如果它已经存在更新其分数
+
 - ZCARD  
 	ZCARD key									得到的有序集合成员的数量
+
 - ZCOUNT  
 	ZCOUNT key min max							计算一个有序集合成员与给定值范围内的分数
+
 - ZINCRBY  
 	ZINCRBY key increment member				在有序集合增加成员的分数
+
 - ZINTERSTORE  
 	ZINTERSTORE destination numkeys key [key ...]	多重交叉排序集合，并存储生成一个新的键有序集合。
+
 - ZLEXCOUNT  
 	ZLEXCOUNT key min max						计算一个给定的字典范围之间的有序集合成员的数量
+
 - ZRANGE  
 	ZRANGE key start stop [WITHSCORES]			由索引返回一个成员范围的有序集合（从低到高）
+
 - ZRANGEBYLEX  
 	ZRANGEBYLEX key min max [LIMIT offset count]返回一个成员范围的有序集合（由字典范围）
+
 - ZRANGEBYSCORE  
 	ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]	返回有序集key中，所有 score 值介于 min 和 max 之间(包括等于 min 或 max )的成员，有序集成员按 score 值递增(从小到大)次序排列
+
 - ZRANK  
 	ZRANK key member							确定成员的索引中有序集合
+
 - ZREM  
 	ZREM key member [member ...]				从有序集合中删除一个或多个成员，不存在的成员将被忽略
+
 - ZREMRANGEBYLEX  
 	ZREMRANGEBYLEX key min max					删除所有成员在给定的字典范围之间的有序集合
+
 - ZREMRANGEBYRANK  
 	ZREMRANGEBYRANK key start stop				在给定的索引之内删除所有成员的有序集合
+
 - ZREMRANGEBYSCORE  
 	ZREMRANGEBYSCORE key min max				在给定的分数之内删除所有成员的有序集合
+
 - ZREVRANGE  
 	ZREVRANGE key start stop [WITHSCORES]		返回一个成员范围的有序集合，通过索引，以分数排序，从高分到低分
+
 - ZREVRANGEBYSCORE  
 	ZREVRANGEBYSCORE key max min [WITHSCORES]	返回一个成员范围的有序集合，以socre排序从高到低
+
 - ZREVRANK  
 	ZREVRANK key member							确定一个有序集合成员的索引，以分数排序，从高分到低分
+
 - ZSCORE  
 	ZSCORE key member							获取给定成员相关联的分数在一个有序集合
+
 - ZUNIONSTORE  
 	ZUNIONSTORE destination numkeys key [key ...]	添加多个集排序，所得排序集合存储在一个新的键
+
 - ZSCAN  
 	ZSCAN key cursor [MATCH pattern] [COUNT count]	增量迭代排序元素集和相关的分数
 
-####使用示例  
+### 使用示例  
 
 	redis 127.0.0.1:6379> zadd dbs 100 redis
 	(integer) 1
