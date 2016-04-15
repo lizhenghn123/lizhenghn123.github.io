@@ -28,8 +28,9 @@ ga:
   url: cpper.info
   
 #sitemap
-sitemap:
-  path: sitemap.txt
+#sitemap:
+#  path: sitemap.txt
+gems: [jekyll-paginate]
   
 # disqus 设置
 disqus:
@@ -42,7 +43,7 @@ active: 架构
 
 # 首页除了最新文章外显示分类
 cates: 
-  - Linux
+  - 开发
 
 # 中文本地化
 locals:
