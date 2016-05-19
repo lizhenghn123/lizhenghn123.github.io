@@ -153,6 +153,17 @@ supervisor是python编写的，可以用easy_install、pip都可以安装，比�
 
 此时也可以访问test_http.py程序提供的http服务了，比如http://ip:9999。
 
+**注意：supervisor只能监控前台程序， 如果你的程序是通过fork方式实现的daemon服务，则不能用它监控，否则supervisor> status 会提示：BACKOFF  Exited too quickly (process log may have details)。** 因此像apache、tomcat服务默认启动都是按daemon方式启动的，则不能通过supervisor直接运行启动脚本(service httpd start)，相反要通过一个包装过的启停脚本来完成，比如tomcat在supervisor下的启停脚本请参考：[Controlling tomcat with supervisor](http://serverfault.com/questions/425132/controlling-tomcat-with-supervisor)或者[supervisor-tomcat.conf](https://gist.github.com/mariorez/d70ee9e8301eec783d0e)。
+
+另外，可以将supervisor随系统启动而启动，Linux 在启动的时候会执行 /etc/rc.local 里面的脚本，所以只要在这里添加执行命令即可：
+
+	# 如果是 Ubuntu 添加以下内容（这里要写全路径，因为此时PATH的环境变量未必设置）
+	/usr/local/bin/supervisord -c /etc/supervisord.conf
+
+	# 如果是 Centos 添加以下内容
+	/usr/bin/supervisord -c /etc/supervisord.conf
+
+
 ## 6. supervisor管理
 supervisor的管理可以用命令行工具（supervisorctl）或者web界面管理，如果一步步按上面步骤操作，那么web管理就可以正常使用了，这里单独介绍下supervisorctl命令工具：
 	
