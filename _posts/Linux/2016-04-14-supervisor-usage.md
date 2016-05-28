@@ -64,6 +64,12 @@ supervisor是python编写的，可以用easy_install、pip都可以安装，比�
 	unzip elementtree-1.2.7-20070827-preview.zip  &&  cd elementtree-1.2.7-20070827-preview
 	python setup.py install
 
+或者下载此版本：  
+
+	wget http://www.plope.com/software/meld3/meld3-0.6.5.tar.gz
+	tar -xf meld3-0.6.5.tar.gz && cd meld3-0.6.5
+	python setup.py install
+
 如果安装成功就可以进行下一步了：设置配置文件。
 	
 	### 生成配置文件，且放在/etc目录下
@@ -95,7 +101,7 @@ supervisor是python编写的，可以用easy_install、pip都可以安装，比�
 	 COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 	 superviso 14685 root    4u  IPv4 20155719      0t0  TCP *:etlservicemgr (LISTEN)
 
-现在通过 http://ip:9001/ 就可以查看supervisor的web界面了，当然目前还没有加入任何监控的程序。
+现在通过 http://ip:9001/ 就可以查看supervisor的web界面了(默认用户名及密码是user和123)，当然目前还没有加入任何监控的程序。
 
 ![](http://i.imgur.com/XnqmIH5.png)
 

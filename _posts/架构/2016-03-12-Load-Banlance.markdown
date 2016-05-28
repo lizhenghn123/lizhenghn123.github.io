@@ -5,9 +5,9 @@ title: 负载均衡技术原理及分类
 
 category: 架构
 
-tags: 开发 负载均衡 Ngnix 负载均衡策略 LVS
+tags: 开发 负载均衡 Ngnix LVS
 
-keywords: 开发 负载均衡 Ngnix 负载均衡策略 LVS
+keywords: 开发 负载均衡 Ngnix LVS
 
 description: 本文整理了负载均衡的原理、分类。
 
