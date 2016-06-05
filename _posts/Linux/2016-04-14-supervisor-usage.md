@@ -187,12 +187,13 @@ supervisor的管理可以用命令行工具（supervisorctl）或者web界面管
 
 其中  
 
+- update 更新新的配置到supervisord（不会重启原来已运行的程序）
+- reload，载入所有配置文件，并按新的配置启动、管理所有进程（会重启原来已运行的程序）
 - start xxx: 启动某个进程
 - restart xxx: 重启某个进程
 - stop xxx: 停止某一个进程(xxx)，xxx为[program:theprogramname]里配置的值
 - stop groupworker: 重启所有属于名为groupworker这个分组的进程(start,restart同理)
 - stop all，停止全部进程，注：start、restart、stop都不会载入最新的配置文
-- reload，载入最新的配置文件，并按新的配置启动、管理所有进程。
 - reread，当一个服务由自动启动修改为手动启动时执行一下就ok
 
 注意：如果原来的程序启动时需要带上参数，那通过supervisorctl start时应该先写一个shell脚本，然后supervisorctl运行该脚本即可。

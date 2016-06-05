@@ -186,7 +186,11 @@ slave上：
 	auto-increment-offset = 2
  
 ## 3. Reference
-[MYSQL主从同步](http://blog.csdn.net/gaowenhui2008/article/details/46698321)  
-[主从server-id不生效，The server is not configured as slave ](http://blog.itpub.net/27099995/viewspace-1294103/) [mysql故障~Got fatal error 1236 解决方法](http://blog.chinaunix.net/uid-26446098-id-3310546.html)  
-[MySQL主从同步、读写分离配置步骤](http://www.jb51.net/article/29818.htm)  
-[MYSQL管理之主从同步管理](http://blog.chinaunix.net/uid-20639775-id-3254611.html)  
+- [MYSQL主从同步](http://blog.csdn.net/gaowenhui2008/article/details/46698321)  
+- [主从server-id不生效，The server is not configured as slave ](http://blog.itpub.net/27099995/viewspace-1294103/)
+- [mysql故障~Got fatal error 1236 解决方法](http://blog.chinaunix.net/uid-26446098-id-3310546.html)  
+- [MySQL主从同步、读写分离配置步骤](http://www.jb51.net/article/29818.htm)  
+- [MYSQL管理之主从同步管理](http://blog.chinaunix.net/uid-20639775-id-3254611.html)   
+- [mysql高可用探究(二)Lvs+Keepalived+Mysql单点写入主主同步高可用方案](http://szgb2014.blog.51cto.com/340201/1181286)
+- [浅谈mysql主从复制的高可用解决方案](http://aokunsang.iteye.com/blog/2054559)   
+- [MySQL高可用方案介绍](http://blog.itpub.net/26355921/viewspace-1248096/)
