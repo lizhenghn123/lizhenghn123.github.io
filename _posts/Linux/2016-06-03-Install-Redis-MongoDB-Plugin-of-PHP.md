@@ -19,7 +19,8 @@ description: 本文介绍如何在linux下安装redis及MongoDB的php扩展。
 
 ###1.1  前提准备  
 - php redis 下载地址[在此](http://pecl.php.net/package/redis)  
-- phpize工具
+- phpize工具  
+
 ###1.2  安装步骤  
 
 wget、phpize、make、make install：
@@ -98,7 +99,8 @@ wget、phpize、make、make install：
 
 ###2.1  前提准备  
 - php mongodb 下载地址[在此](http://pecl.php.net/package/mongo)  
-- phpize工具
+- phpize工具  
+
 ###2.2  安装步骤  
 
 wget、phpize、make、make install：
