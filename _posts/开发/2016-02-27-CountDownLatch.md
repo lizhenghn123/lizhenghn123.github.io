@@ -9,7 +9,7 @@ tags: 开发 C++ 多线程
 
 keywords: 开发 技术 多线程 CountDownLatch 栅栏
 
-description: 滴答滴答滴答滴答。
+description: 多线程并发编程之同步工具CountDownLatch。
 
 ---
 
