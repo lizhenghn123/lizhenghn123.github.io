@@ -13,9 +13,13 @@ description: 本文介绍了我在使用Git过程中记录下来的一些常用g
 
 ---
 
-先上一张图作为引言
+先上两张图作为引言
 
 ![一个git流程](http://i.imgur.com/S9pcYfs.jpg)
+
+和  
+
+![](http://i.imgur.com/OvLK9ZZ.png)
 
 ## Git配置
     git config --global user.name "xusd-null"
