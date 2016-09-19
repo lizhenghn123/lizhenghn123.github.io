@@ -60,7 +60,7 @@ vim /etc/my.cnf，增加以下内容：
 	replicate-do-db=wuxi
 	#不需要备份的数据库； 
 	replicate-ignore-db=mysql 
-	log-slave-update 
+	log-slave-updates 
 	slave-skip-errors
 
 ###1.5 设置master和slave的mysql
@@ -97,7 +97,7 @@ vim /etc/my.cnf，增加以下内容：
 
 2. 设置从库的my.cnf，增加以下设置，并重启从库mysql服务    
 
-	 slave\_skip\_errors = 1062 
+	 slave-skip-errors = 1062 
 
 3. 设置同步位置  
 
