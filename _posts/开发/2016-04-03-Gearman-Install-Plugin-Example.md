@@ -58,7 +58,7 @@ Gearman官网：[http://gearman.org/](http://gearman.org/)， Gearman文档：[h
     # cat /etc/issue
     CentOS release 6.4 (Final)
     Kernel \r on an \m
-    
+
 ### 1.2 编译Gearman
 
 下载Gearman源代码，[gearman首页点此](https://launchpad.net/gearmand)，本次编译时下载的是[gearmand-1.1.12版本](https://launchpad.net/gearmand/1.2/1.1.12/+download/gearmand-1.1.12.tar.gz)。
@@ -119,6 +119,12 @@ Gearman支持持久化存储任务，持久化到数据库中，可选数据库�
     gearmand 1.1.12 - https://bugs.launchpad.net/gearmand
 
 如上则表示已将Gearman安装到系统中了。
+
+### 1.3 yum安装gearman
+
+    #rpm -ivh http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/epel-release-6-5.noarch.rpm
+    #yum install -y gearmand
+	#service gearmand start
 
 ## 2. 启动和测试Gearman
 

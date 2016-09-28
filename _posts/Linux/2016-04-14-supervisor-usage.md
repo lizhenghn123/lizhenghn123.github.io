@@ -346,8 +346,10 @@ cesi.conf配置文件的设置：
 	;members = <node_name>, <node_name2>
 	
 	[cesi]
-	database = /root/temp/cesi/userinfo.db    ### 设置db路径
-	activity_log = /root/temp/cesi/cesi.log   ### 设置log路径
+	;设置db路径
+	database = /root/temp/cesi/userinfo.db    
+	;设置log路径
+	activity_log = /root/temp/cesi/cesi.log   
 	host = 0.0.0.0
 
 一切顺利的话，可通过页面http://ip:5000，用户名，密码都是admin，最终的效果如下所示：  

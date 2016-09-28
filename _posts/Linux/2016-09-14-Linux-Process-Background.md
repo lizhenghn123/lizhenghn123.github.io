@@ -88,11 +88,13 @@ description: linux进程后台运行的几种方式。
 
 ## 通过nohup方式启动
 	nohup ./a.out &
-以上命令就运行了一些后台程序(a.out)， 注意此时可能会在当前目录产生一个nohup.out文件，且该文件有可能很大，直接删掉该文件即可。  
+	rm -rf nohup.out
+
+以上命令就运行了一些后台程序(a.out)， 注意此时可能会在当前目录产生一个nohup.out文件，且该文件有可能很大，直接删掉该文件即可。 
+
 或者将所有输出dump到/dev/null下：  
 
-	nohup ./elasticsearch > /dev/null 2>log & 
-	rm -rf nohup.out
+	nohup ./elasticsearch > /dev/null 2>&1 & 
 
 ## 通过screen命令进行启动
 
