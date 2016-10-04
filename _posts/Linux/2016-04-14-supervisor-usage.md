@@ -5,7 +5,7 @@ title: Linux进程管理工具supervisor安装及使用
 
 category: 开发
 
-tags: Linux supervisor 进程管理 进程监控
+tags: Linux supervisor
 
 keywords: Linux supervisor 进程管理 进程监控
 
