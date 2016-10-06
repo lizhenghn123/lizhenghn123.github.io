@@ -142,12 +142,12 @@ def sendMail(title, content, sender, receiver, serverip, serverport, username, p
 if __name__ == "__main__":
     
     config = {
-    "from": "liz812117@163.com",            # 发件人邮箱
-    "to": "lizheng@thinkit.cn",             # 收件人邮箱
+    "from": "XXXXXXXXX@163.com",            # 发件人邮箱
+    "to": "YYYYYYYYY@qq.com",               # 收件人邮箱
     "serverip": "smtp.163.com",             # 发件服务器IP
     "serverport":"25",                      # 发件服务器Port
-    "username": "liz812117@163.com",        # 发件人用户名
-    "pwd": "lzwllove872130"                 # 发件人密码
+    "username": "XXXXXXXXX",                # 发件人用户名
+    "pwd": "zzzzzzzzzzzzzz"                 # 发件人密码
     }
     
     title = "python send mail"
