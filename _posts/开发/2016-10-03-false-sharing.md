@@ -76,6 +76,16 @@ false sharing就是缓存行上的伪共享现象，因此也叫伪共享。
 	#cat /proc/cpuinfo  | grep cache_alignment | uniq
 	cache_alignment	: 64
 
+或者通过代码读取：
+	
+	FILE* file = fopen("/sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size", "r");
+	unsigned int cache_line = 0;
+	if(file)
+	{
+		size_t n = fscanf(file, "%u", &cache_line);
+		assert(n == 1);
+	}
+
 单位是字节。
 
 ## 4. 如何避免false sharing
