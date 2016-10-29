@@ -172,6 +172,7 @@ false sharing就是缓存行上的伪共享现象，因此也叫伪共享。
 		}
 2. 使用线程局部存储
 		
+		// t2.cpp 
 		#include <iostream>
 		#include <thread>
 		
@@ -205,6 +206,7 @@ false sharing就是缓存行上的伪共享现象，因此也叫伪共享。
 
 3. 使用padding填充隔开cache line
 			
+		// t3.cpp 
 		#include <iostream>
 		#include <thread>
 		
