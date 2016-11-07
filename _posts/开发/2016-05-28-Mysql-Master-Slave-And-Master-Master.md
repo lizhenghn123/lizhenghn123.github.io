@@ -16,18 +16,18 @@ description: 本文介绍了mysql数据库的主从复制和主主复制的实�
 ## 1. 主从复制
 假设master为192.168.14.202，slave为192.168.14.201。目前所有的写入/读取都是针对master操作的，slave用来做master的数据备份。目标是当master机器挂掉后，slave能够提供服务。
 
-###1.1 从master上导出数据库  
+### 1.1 从master上导出数据库  
 
 	mysqldump -u 用户名 -p 数据库名 > 导出的文件名
 	mysqldump -u root -p db1 > db1.sql 
 
 注意：mysqldump是把master上的所有数据也导出了，如果不关注这些旧数据记录，可以只导出表的创建sql即可。
 
-###1.2 在slave上导入数据库
+### 1.2 在slave上导入数据库
 
 登录mysql后，创建数据库，然后执行source db1.sql；
 
-###1.3 修改master上的my.cnf
+### 1.3 修改master上的my.cnf
 
 vim /etc/my.cnf，增加以下内容：  
 	
@@ -44,7 +44,7 @@ vim /etc/my.cnf，增加以下内容：
 	#跳过错误，继续执行复制； 
 	slave-skip-errors
 
-###1.4 修改slave上的my.cnf
+### 1.4 修改slave上的my.cnf
 
 vim /etc/my.cnf，增加以下内容：
 	
@@ -63,7 +63,7 @@ vim /etc/my.cnf，增加以下内容：
 	log-slave-updates 
 	slave-skip-errors
 
-###1.5 设置master和slave的mysql
+### 1.5 设置master和slave的mysql
 
 在master上，登录mysql，建立同步帐号
 
@@ -85,7 +85,7 @@ vim /etc/my.cnf，增加以下内容：
 也可以在master上查看slave的I/O线程创建的连接：  
 
 	mysql> show processlist \G
-###1.6 FAQ
+### 1.6 FAQ
 #### Last_Errno: 1062， Error Duplicate entry
 是由于某个时候主键不同步导致从库插入记录时发现了主键重复导致，这里有三种可行办法解决：
 

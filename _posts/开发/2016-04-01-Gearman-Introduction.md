@@ -64,9 +64,7 @@ gearman提供一系列api从而使你的client与worker能够与job server通信
 
 ![](http://gearman.org/img/stack.png)  
 
-Gearman 不但可以做为任务分发，还可以做为应用方面是负载均衡，我们可以让 Workerer 放在不同的一堆服务器上，也可以启动放在同一个 CPU 的多个核上。比如，以我们常用的应用视频转换程序，但是不希望 Web 的服务器来处理视频的格式处理的过程，这时，我们就可以在这一堆服务器上进行任务分发，在上面加载 Workerer 处理视频格式处理和转换。这样对外的 web 服务器将不会被视频转换的过程影响，同时也能很多的让所有服务器负载均衡的工作来处理，也非常方便扩展，加一个机器到任务调度中心，注册成 Workerer 就行，这时 Job Server 会在请求到来的时候，将这个请求发给空闲的这个 Workerer. 另外你还可以运行多个Job Server。可以组成一个 HA 的架构，如果一个Job Server 的进程 down了，client 和 Workerer 会自动迁移到另一台Job Server上。如下图所示：
-
-![](http://www.oschina.net/uploads/bbs/2010/0908/154011_SAdT_12.jpg)
+Gearman 不但可以做为任务分发，还可以做为应用方面是负载均衡，我们可以让 Workerer 放在不同的一堆服务器上，也可以启动放在同一个 CPU 的多个核上。比如，以我们常用的应用视频转换程序，但是不希望 Web 的服务器来处理视频的格式处理的过程，这时，我们就可以在这一堆服务器上进行任务分发，在上面加载 Workerer 处理视频格式处理和转换。这样对外的 web 服务器将不会被视频转换的过程影响，同时也能很多的让所有服务器负载均衡的工作来处理，也非常方便扩展，加一个机器到任务调度中心，注册成 Workerer 就行，这时 Job Server 会在请求到来的时候，将这个请求发给空闲的这个 Workerer. 另外你还可以运行多个Job Server。可以组成一个 HA 的架构，如果一个Job Server 的进程 down了，client 和 Workerer 会自动迁移到另一台Job Server上。
 
 从上面可以看出来 Worker 是可扩展的。如果你有需要 Worker 是可以运行任意多个的。另外，我们对 Application不用过多在意，同样也是可以多个。 Application 的客户只有一个任务，就是加入任务到 Gearman 中来.
 
