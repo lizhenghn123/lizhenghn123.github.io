@@ -13,7 +13,7 @@ description: 本文整理了Nginx反向代理、负载均衡搭建。
 
 ---
 
-## 1. 介绍
+## 介绍
 nginx的官方介绍：  
 
 	nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server
@@ -24,8 +24,8 @@ nginx不单可以作为强大的web服务器，也可以作为一个反向代理
 
 nginx内置了对后端服务器的健康检查功能。如果Nginx proxy后端的某台服务器宕机了，会把返回错误的请求重新提交到另一个节点，不会影响前端访问。它没有独立的健康检查模块，而是使用业务请求作为健康检查，这省去了独立健康检查线程，这是好处。坏处是，当业务复杂时，可能出现误判，例如后端响应超时，这可能是后端宕机，也可能是某个业务请求自身出现问题，跟后端无关。
 
-## 2. 安装
-### 2.1 yum 安装nginx
+## 安装
+### yum 安装nginx
 1. 执行：    
 	rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm	
 2. 查看：   
@@ -35,15 +35,15 @@ nginx内置了对后端服务器的健康检查功能。如果Nginx proxy后端�
 4. 启动   
 	service nginx start  
 
-### 2.2 源码安装
+### 源码安装
 
 	wget http://nginx.org/download/nginx-1.10.1.tar.gz  # 以1.10.1版本为例  
 	tar -xf nginx-1.10.1.tar.gz  
 	./configure  
 	make && make install                                # 默认安装到/usr/local/nginx目录  
 
-## 3. 负载均衡
-### 3.1 负载均衡策略
+## 负载均衡
+### 负载均衡策略
 目前nginx支持以下几种负载策略：  
 
 1. round-robin（轮询, 默认）   
@@ -172,7 +172,7 @@ max\_fails 次失败后，暂停的时间。
 	}
 按第一种配置的话，访问nginx地址`http://10.0.0.1:80/my`的请求会被转发到my_server服务地址`http://10.0.0.2:8080/`；而按第二种配置的话，访问nginx地址`http://10.0.0.1:80/my`的请求会被转发到my_server服务地址`http://10.0.0.2:8080/my`。这是因为proxy_pass参数中如果不包含url的路径，则会将location的pattern识别的路径作为绝对路径。
 
-### 3.2 多台机器间session共享问题
+### 多台机器间session共享问题
 配置负载均衡并不麻烦，但是最关键的一个问题是怎么实现多台服务器之间session的共享。  
 这里也有几个思路可以作为参考：  
 
@@ -182,7 +182,29 @@ max\_fails 次失败后，暂停的时间。
 3. ip_hash  
 是将某一个ip的所有请求都转发到同一个后台服务器。这样下来nginx前面的一个客户端和nginx后面的某一个后端就保持一致的联系。
 
-## 4. nginx 日志
+## TCP负载均衡
+nginx默认都是在应用层协议进行负载均衡的（比如HTTP），而事实上从1.9.0版本开始，nginx也支持tcp协议的负载均衡。做法并没有什么复杂的，一个简单的配置如下所示：
+	
+	stream {
+	    upstream realservers{
+	        hash $remote_addr consistent;
+	        server 192.168.14.207:8888 weight=5 max_fails=3 fail_timeout=30s;
+	    }
+	    server{
+	        listen 8001;
+	        proxy_connect_timeout 1s;
+	        proxy_timeout 3s;
+	        proxy_pass realservers;
+	    }
+	}
+
+此时nginx监听在8001端口，真实tcp server监听在192.168.14.207:8888。
+
+注意： tcp协议的负载并不在nginx的默认编译选项中，需要在编译选项中加入`--with-stream`项，比如：  
+
+	./configure --with-stream ....
+
+## nginx 日志
 nginx的日志保存为两种：access.log和error.log。其中access.log中每一行都是客户端访问nginx的一个请求，其格式如下：  
 
 	$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent" $http_x_forwarded_for
@@ -229,7 +251,7 @@ nginx 中的一些请求头信息：
 
 	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-## 5. Reference
+## Reference
 - [Linux（CentOS）下，下载安装Nginx并配置](http://blog.csdn.net/gaojinshan/article/details/37603157)  
 - [Nginx load balancer](https://www.nginx.com/resources/admin-guide/load-balancer/)  
 - [Nginx Upstream Consistent Hash](https://www.nginx.com/resources/wiki/modules/consistent_hash)  
@@ -237,3 +259,5 @@ nginx 中的一些请求头信息：
 - [Nginx choose upstream depending on args](http://serverfault.com/questions/561993/nginx-choose-upstream-depending-on-args)
 - [how to use url pathname as upstream hash in nginx](http://stackoverflow.com/questions/31994395/how-to-use-url-pathname-as-upstream-hash-in-nginx)
 - [http://blog.51yip.com/apachenginx/1277.html](http://blog.51yip.com/apachenginx/1277.html)
+- [简单测试nginx1.90做TCP协议负载均衡的功能](http://www.cnblogs.com/tzyy/p/4485613.html)
+- [Nginx Tcp Proxy](http://nginx.org/en/docs/stream/ngx_stream_core_module.html)
