@@ -3,7 +3,7 @@ permalink: /:year/:month/:day/:title.html
 #分页时每页博文数量
 paginate: 10
 #markdown: redcarpet
-#markdown:       kramdown
+markdown:       kramdown
 #highlighter:    rouge
 #kramdown:
 #  input:                     GFM
