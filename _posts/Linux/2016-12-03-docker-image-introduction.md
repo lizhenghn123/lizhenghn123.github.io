@@ -317,5 +317,5 @@ Failed to remove image (e4415b714b62): Error response from daemon: conflict: una
 
 ## Reference
 - <<我的第一本Docker书>>
-- <<Docker从入门到实践>>
+- << Docker从入门到实践 >>
 - [Centos 7 docker私有仓库的搭建](https://www.tianmaying.com/tutorial/docker-registry)
