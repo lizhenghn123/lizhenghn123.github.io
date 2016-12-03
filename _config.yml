@@ -3,6 +3,20 @@ permalink: /:year/:month/:day/:title.html
 #分页时每页博文数量
 paginate: 10
 #markdown: redcarpet
+markdown:       kramdown
+highlighter:    rouge
+kramdown:
+  input:                     GFM
+  auto_ids:                  true
+  footnote_nr:               1
+  entity_output:             as_char
+  toc_levels:                1..6
+  smart_quotes:              lsquo,rsquo,ldquo,rdquo
+  enable_coderay:            false
+  hard_wrap:                 false
+  syntax_highlighter:        rouge
+  transliterated_header_ids: true
+  footnote_backlink:         "&#8617;&#xfe0e;"
 
 # 作者信息
 author: 
