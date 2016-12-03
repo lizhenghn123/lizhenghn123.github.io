@@ -15,7 +15,7 @@ kramdown:
   enable_coderay:            false
 #  hard_wrap:                 false
 #  syntax_highlighter:        rouge
-  transliterated_header_ids: true
+#  transliterated_header_ids: true
 #  footnote_backlink:         "&#8617;&#xfe0e;"
 
 # 作者信息
