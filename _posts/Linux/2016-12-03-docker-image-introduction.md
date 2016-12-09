@@ -3,7 +3,7 @@ layout: post
 
 title: Docker镜像(Image)学习笔记
 
-category: Linux
+category: Docker
 
 tags: Linux Docker 
 

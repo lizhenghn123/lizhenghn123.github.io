@@ -3,7 +3,7 @@ layout: post
 
 title: 入了Docker的坑
 
-category: Linux
+category: Docker
 
 tags: Linux Docker 
 
