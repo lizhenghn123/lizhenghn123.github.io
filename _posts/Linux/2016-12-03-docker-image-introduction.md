@@ -80,7 +80,7 @@ root@fe7fc4bd8fc9:/#
 ```
 
 ## 列出本地镜像
-使用 docker images 显示本地已有的镜像。  
+使用`docker images`显示本地已有的镜像。 可以使用`docker images -a`列出所有镜像，包括产生的中间状态的镜像。  
 
 ```shell
 $ docker images
@@ -89,6 +89,13 @@ docker.io/ubuntu    16.04               e4415b714b62        11 days ago         
 docker.io/ubuntu    latest              e4415b714b62        11 days ago         128.1 MB
 docker.io/ubuntu    12.04               aefa163f7a7e        11 days ago         103.5 MB
 docker.io/centos    latest              0584b3d2cf6d        3 weeks ago         196.5 MB
+$ docker images -a
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+<none>                       <none>              0047abcffada        2 weeks ago         224.2 MB
+<none>                       <none>              dd9f517f7a2f        2 weeks ago         224.2 MB
+<none>                       <none>              6d25caff4dd2        2 weeks ago         128.1 MB
+docker.io/ubuntu             16.04               e4415b714b62        11 days ago         128.1 MB
+docker.io/ubuntu             latest              e4415b714b62        11 days ago         128.1 MB
 ```
 
 在列出信息中，可以看到几个字段信息:
@@ -102,6 +109,19 @@ docker.io/centos    latest              0584b3d2cf6d        3 weeks ago         
 其中镜像的 ID 唯一标识了镜像，注意到 ubuntu:16.04 和 ubuntu:latest具有相同的镜像 ID ，说明它们实际上是同一镜像。
 TAG 信息用来标记来自同一个仓库的不同镜像。例如 ubuntu 仓库中有多个镜像，通过 TAG 信息来区分发行版本，例如10.04 、 12.04 、 12.10 、 13.04 、 14.04 等。例如可以使用`docker run -t -i ubuntu:16.04 /bin/bash`命令指定使用
 镜像 ubuntu:16.04 来启动一个容器。如果不指定具体的标记，则默认使用 latest 标记信息。
+
+## 查看镜像每一层的信息
+
+```shell
+docker history docker.io/ubuntu:16.04
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+e4415b714b62        3 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0 B                 
+<missing>           3 weeks ago         /bin/sh -c mkdir -p /run/systemd && echo 'doc   7 B                 
+<missing>           3 weeks ago         /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 kB            
+<missing>           3 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B                 
+<missing>           3 weeks ago         /bin/sh -c set -xe   && echo '#!/bin/sh' > /u   745 B               
+<missing>           3 weeks ago         /bin/sh -c #(nop) ADD file:abc033900893f6c737   128.1 MB     
+```
 
 ## 创建镜像
 创建镜像有很多方法，用户可以从 Docker Hub 获取已有镜像并更新，也可以利用本地文件系统创建一个。  
