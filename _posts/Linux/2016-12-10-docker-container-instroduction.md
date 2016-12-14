@@ -13,7 +13,6 @@ description: 本文介绍了Docker 容器的基本知识以及容器的各种命
 
 ---
 
-
 ## 容器是什么
 - 容器(Container)是 Docker 的三大组件之一。   
 - 容器是独立运行的一个或一组应用，以及它们的运行态环境。对应的虚拟机可以理解为模拟运行的一整套操作系统（提供了运行态环境和其他系统环境）和跑在上面的应用。
@@ -102,11 +101,11 @@ root@055c544ca4e2:/# hostname
 如果不使用-d参数运行容器：
 
 ```shell
-	# docker run ubuntu:16.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
-	hello world
-	hello world
-	hello world
-	......
+# docker run ubuntu:16.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+hello world
+hello world
+hello world
+......
 ```
 	
 容器会把输出的结果(STDOUT)打印到宿主机上面。
@@ -114,8 +113,8 @@ root@055c544ca4e2:/# hostname
 如果使用了-d参数运行容器： 
 
 ```shell
-	# docker run -d ubuntu:16.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
-	4aba8fe48b2e3f76a013c2935f3efb27a3f0e0470c731443751cf3051879dd53
+# docker run -d ubuntu:16.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+4aba8fe48b2e3f76a013c2935f3efb27a3f0e0470c731443751cf3051879dd53
 ```
 
 使用-d参数启动后会返回一个唯一的id，也可以通过docker ps命令来查看容器信息。此时容器会在后台运行并不会把输出的结果(STDOUT)打印到宿主机上面(输出结果可以用docker logs查看)。  
@@ -125,12 +124,12 @@ root@055c544ca4e2:/# hostname
 要获取容器的输出信息，可以通过 docker logs 命令。  
 
 ```shell
-	# docker logs 4aba
-	hello world
-	hello world
-	hello world
-	hello world
-	hello world
+# docker logs 4aba
+hello world
+hello world
+hello world
+hello world
+hello world
 ```
 
 ## 终止容器
@@ -153,8 +152,8 @@ root@055c544ca4e2:/# hostname
 预先在宿主机上运行一个容器进行测试： 
 
 ```shell
-	# docker run -i -t -d -p 10022:22 ubuntu:16.04 /bin/bash
-	a061051c1067bd5eb38b788e980cea65d5b60f0bf9c74b15218ae954678bbc47
+# docker run -i -t -d -p 10022:22 ubuntu:16.04 /bin/bash
+a061051c1067bd5eb38b788e980cea65d5b60f0bf9c74b15218ae954678bbc47
 ```
 
 ### attach 命令
@@ -185,9 +184,9 @@ nsenter工具在util-linux包2.23版本后包含。如果系统中util-linux包�
 为了连接到容器，你还需要找到容器的第一个进程的PID，可以通过下面的命令获取：
 
 ```shell
-	# PID=$(docker inspect --format "{{.State.Pid}}" a061051c1067)
-	# echo $PID
-	11979
+# PID=$(docker inspect --format "{{.State.Pid}}" a061051c1067)
+# echo $PID
+11979
 ```
 	
 通过这个PID，就可以连接到这个容器：

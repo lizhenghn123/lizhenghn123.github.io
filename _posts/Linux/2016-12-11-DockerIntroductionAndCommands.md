@@ -212,10 +212,11 @@ sonar容器连接到mmysql容器，并将mmysql容器重命名为db。这样，s
 1. 构建自己的镜像  
 
     `docker build -t <镜像名> <Dockerfile路径>`  
-如Dockerfile在当前路径： `docker build -t xx/gitlab .`
+    如Dockerfile在当前路径： `docker build -t xx/gitlab .`
 
 1. 镜像的保存和载入  
-
-    `docker save -o /tmp/mysave.tar <镜像名:tag>`
-    `docker export -o ubuntu1204.tar <容器id>`  # export其实是容器的保存，只把镜像当前的状态保存下来，没有历史版本等信息，所以文件比较小
-    `docker load <　/tmp/mysave.tar`
+    
+        docker save -o /tmp/mysave.tar <镜像名:tag>
+        # export其实是容器的保存，只是把镜像当前的状态保存下来，没有历史版本等信息，所以文件比较小
+        docker export -o ubuntu1204.tar <容器id>
+        docker load <　/tmp/mysave.tar
