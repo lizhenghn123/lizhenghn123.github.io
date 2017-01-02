@@ -51,8 +51,12 @@ CMD	/usr/sbin/nginx
 ## Dockerfile指令
 Dockfile中由一系列指令和参数组成。每条指令，如FROM，都必须为大些字母，而后面要跟随参数。
 
+### FROM
+格式为`FROM  <image>`或`FROM <image>:<tag>`。  
+指定基础镜像。基础镜像是必须指定的。而FROM 就是指定基础镜像，因此一个 Dockerfile 中 FROM 是必备的指令，并且必须是第一条指令。
+
 ### MAINTAINER
-格式为` MAINTAINER	<name>`，指定维护者信息。比如：
+格式为` MAINTAINER	<name>`，指定维护者信息。比如：`MAINTAINER The CentOS Project <cloud-ops@centos.org>`。
 
 ### RUN
 格式为`RUN <command>`或`RUN	["executable",	"param1",	"param2"]`。  
