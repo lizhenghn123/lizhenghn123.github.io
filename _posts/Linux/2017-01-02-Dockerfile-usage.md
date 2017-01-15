@@ -20,7 +20,6 @@ description: 使用Dockerfile构建镜像和容器。
 
 ```shell
 $ tree
-.
 ├── Dockerfile
 ├── nginx
 │   ├── global.conf
@@ -67,6 +66,8 @@ user www-data;
 worker_processes 4;
 pid /run/ngnix.pid;
 daemon off;
+
+events { }
 
 http {
     include /etc/nginx/conf.d/*.conf;
