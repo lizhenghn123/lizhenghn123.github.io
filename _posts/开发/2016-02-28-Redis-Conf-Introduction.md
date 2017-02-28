@@ -122,6 +122,81 @@ redis.conf 配置项说明如下：
 30. 指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件  
     **include /path/to/local.conf**
 
+## 优化
+
+### vm.overcommit_memory
+
+Redis在启动时可能会出现这样的日志：
+
+> 
+> WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+
+
+Linux操作系统对大部分申请内存的请求都回复yes，以便能运行更多的程序。因为申请内存后，并不会马上使用内存，这种技术叫做overcommit。如果Redis在启动时有上面的日志，说明vm.overcommit_memory=0，**Redis提示把它设置为1**。  
+vm.overcommit_memory用来设置内存分配策略，它有三个可选值，如下表所示：  
+
+vm.overcommit_memory | 含义
+--------|---------
+0 | 表示内核将检查是否有足够的可用内存。如果有足够的可用内存，内存申请通过，否则内存申请失败，并把错误返回给应用进程
+1 | 表示内核允许超量使用内存直到用完为止
+2 | 表示内核决不过量的(“never overcommit”)使用内存，即系统整个内存地址空间不能超过swap+50%的RAM值，50%是overcommit_ratio默认值，此参数同样支持修改
+
+设置overcommit_memory：  
+
+```shell
+$ cat /proc/sys/vm/overcommit_memory                    # 查看
+$ echo "vm.overcommit_memory=1" >> /etc/sysctl.conf     # 设置
+$ sysctl vm.overcommit_memory=1
+vm.overcommit_memory = 1
+$ cat /proc/sys/vm/overcommit_memory
+1
+```
+
+### Transparent Huge Pages
+Redis在启动时可能会看到如下日志：  
+
+> 
+> WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+
+Linux kernel在2.6.38内核增加了Transparent Huge Pages (THP)特性 ，支持大内存页(2MB)分配，默认开启。当开启时可以降低fork子进程的速度，但fork之后，每个内存页从原来4KB变为2MB，会大幅增加重写期间父进程内存消耗。同时每次写命令引起的复制内存页单位放大了512倍，会拖慢写操作的执行时间，导致大量写操作慢查询。例如简单的incr命令也会出现在慢查询中。因此Redis日志中建议将此特性进行禁用，禁用方法如下：  
+
+```shell
+echo never >  /sys/kernel/mm/transparent_hugepage/enabled
+```
+
+为了使机器重启后THP配置依然生效，可以在/etc/rc.local中追加`echo never > /sys/kernel/mm/transparent_hugepage/enabled`。  
+
+### TCP backlog
+Redis默认的tcp-backlog为511，可以通过修改配置tcp-backlog进行调整，如果Linux的tcp-backlog小于Redis设置的tcp-backlog，那么在Redis启动时会看到如下日志：
+
+> 
+> WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+
+可以通过以下步骤进行修改：  
+
+```shell
+$ cat /proc/sys/net/core/somaxconn          # 查看  
+$ echo 511 > /proc/sys/net/core/somaxconn   # 设置 
+```
+
+### open files
+在Linux中，可以通过ulimit查看和设置系统的当前用户进程的资源数。其中ulimit -a命令包含的open files参数，是单个用户同时打开的最大文件个数。
+
+Redis允许同时有多个客户端通过网络进行连接，可以通过配置maxclients来限制最大客户端连接数。对Linux操作系统来说这些网络连接都是文件句柄。假设当前open files是4096，那么启动Redis时会看到如下日志：  
+
+> You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+> Redis can’t set maximum open files to 10032 because of OS error: Operation not permitted.
+> Current maximum open files is 4096. Maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase ‘ulimit –n’.
+
+
+可以通过以下步骤进行修改： 
+
+```shell
+$ ulimit -n          # 查看 
+1024 
+$ ulimit -n 102400   # 设置 
+```
+
 ## Reference
 
 - [Redis 配置](http://www.runoob.com/redis/redis-conf.html)
